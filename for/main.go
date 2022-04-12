@@ -10,6 +10,7 @@ func main() {
 		i++
 	}
 
+	// like for(;;) in java
 	for {
 		fmt.Println("loop")
 		break
