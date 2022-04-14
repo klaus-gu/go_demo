@@ -3,9 +3,28 @@ package main
 import "fmt"
 
 func main() {
-	create_channel()
+	//create_channel()
+	//close_channel()
+	channel_demo()
 }
 
+func channel_demo() {
+	myChannel := make(chan int, 5)
+	myChannel <- 1
+	myChannel <- 2
+	myChannel <- 3
+	myChannel <- 4
+	myChannel <- 5
+	close(myChannel)
+
+	for elem := range myChannel {
+		fmt.Println(elem)
+	}
+}
+
+/**
+关闭channel
+*/
 func close_channel() {
 	jobs := make(chan int, 5)
 	done := make(chan bool)
@@ -28,6 +47,8 @@ func close_channel() {
 		fmt.Println("sent job ", j)
 	}
 	close(jobs)
+	// 重复关闭一个已经 close 的 channel 会出现 panic
+	// close(jobs)
 	fmt.Println("sent all jobs")
 	<-done
 }
