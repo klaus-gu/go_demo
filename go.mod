@@ -4,6 +4,7 @@ go 1.18
 
 require (
 	github.com/gin-gonic/gin v1.7.7
+	github.com/go-sql-driver/mysql v1.6.0
 	github.com/gofiber/fiber/v2 v2.33.0
 	github.com/gorilla/mux v1.8.0
 )

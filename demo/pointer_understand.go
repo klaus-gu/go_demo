@@ -6,7 +6,6 @@ func main() {
 	// 值类型参数，实参的值未改变
 	mySalary := 80000
 	fmt.Printf("变量 mySalary 的内存地址为：%p\n", &mySalary)
-
 	modifySalary(mySalary)
 	fmt.Println(mySalary)
 
