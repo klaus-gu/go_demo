@@ -23,3 +23,7 @@ func main() {
 	wg.Wait()
 	fmt.Println(ops)
 }
+
+func test() {
+
+}
