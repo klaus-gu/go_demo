@@ -3,6 +3,36 @@ package main
 import "fmt"
 
 func main() {
+	//slices()
+	append_test()
+}
+
+func append_test() {
+	var sliceA = make([]int, 5)
+	for i := 1; i <= 5; i++ {
+		sliceA[i-1] = i
+	}
+	fmt.Printf("初始化内存地址：%x", &sliceA)
+
+	sliceA = append(sliceA, 9)
+	fmt.Printf("append 之后的内存地址：%x", &sliceA)
+}
+
+func slices() {
+	var sliceA = make([]string, 10)
+	fmt.Println("初始大小：", len(sliceA))
+
+	for i := 0; i < 10; i++ {
+		sliceA[i] = "元素" + string(i)
+	}
+	var childSlice = sliceA[:6]
+	fmt.Printf("子slice: %v\n", childSlice)
+	for a, b := range childSlice {
+		fmt.Printf("下标：%d，值：%s\n", a, b)
+	}
+}
+
+func demo() {
 	/**
 	创建同一种类型的切片，
 	创建空的切片需要使用 make
