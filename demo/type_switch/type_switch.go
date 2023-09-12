@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"go/types"
 )
 
 func main() {
@@ -12,9 +11,9 @@ func main() {
 	case bool:
 		fmt.Printf("这是一个布尔类型：%T", t)
 	}
-	fmt.Println()
+	fmt.Println(3 >> 2)
 }
 
 func findType() interface{} {
-	return types.Bool
+	return true
 }
