@@ -2,6 +2,66 @@ package main
 
 import "fmt"
 
+func main() {
+	//struct_display()
+	//pointAndAddr()
+	//pointerVar()
+	testPtrAndNonPtr()
+}
+
+func testPtrAndNonPtr() {
+	a := 10
+	checkTypeTrans(a)
+	fmt.Println("a:", a)
+	b := &a
+	checkPointerTypeTrans(b)
+	fmt.Println("a:", a)
+}
+
+/*
+*
+测试非指针类型的传递
+*/
+func checkTypeTrans(a int) {
+	fmt.Println("当前变量的内存地址：", &a)
+	a++
+}
+
+/*
+*
+测试指针类型的传递
+*/
+func checkPointerTypeTrans(a *int) {
+	fmt.Println("当前变量的内存地址：", &a)
+	*a++
+}
+
+func pointAndAddr() {
+	a := 100
+	b := &a
+
+	fmt.Println("a:", a)
+	fmt.Println("b", b)
+	// 重新赋值不会改变内存地址
+	//a = 100
+	//fmt.Println("a:", a)
+	//fmt.Println("b", b)
+
+	fmt.Printf("a type:%T\n", a)
+
+	fmt.Println("bc a", *b)
+}
+
+func pointerVar() {
+	a := 100
+	var b *int = &a
+
+	fmt.Println("取 指针 b 的值：", *b)
+	fmt.Println("取 a 的内存地址：", &a)
+	fmt.Println("取 指针 b 的内存地址：", &b)
+
+}
+
 func zeroVal(iVal int) {
 	iVal = 0
 
@@ -15,10 +75,6 @@ func zeroVal(iVal int) {
 */
 func zeroPtr(iptr *int) {
 	*iptr = 0
-}
-
-func main() {
-	struct_display()
 }
 
 type Person struct {
