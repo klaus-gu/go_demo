@@ -16,9 +16,17 @@ func exit_by_panic() {
 
 func main() {
 	defer func() {
-		fmt.Println("im out ！！！")
+		if err := recover(); err != nil {
+			fmt.Println(err)
+		}
 	}()
-	fmt.Println("START")
-	//exit_by_os()
+	panicWithDeferFunc()
+}
+
+func panicWithDeferFunc() {
+	defer func() {
+		fmt.Println("defer函数执行")
+	}()
 	exit_by_panic()
+	fmt.Println("恢复执行")
 }

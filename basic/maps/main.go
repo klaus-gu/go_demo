@@ -1,9 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"go_demo/basic/maps/maps"
+)
 
 func main() {
+	//demo()
+	maps.DeleteFunc()
+}
 
+func demo() {
 	/**
 	创建空的 map 类似 slices 使用 make 创建
 	*/
@@ -29,5 +36,4 @@ func main() {
 
 	n := map[string]int{"foo": 1, "bar": 2}
 	fmt.Println("map:", n)
-
 }

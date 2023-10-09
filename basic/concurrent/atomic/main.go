@@ -7,6 +7,32 @@ import (
 )
 
 func main() {
+	//cancel()
+	concurrentAdd()
+}
+
+func concurrentAdd() {
+	count := 1
+	wg := sync.WaitGroup{}
+	wg.Add(2)
+	go func() {
+		for i := 1; i <= 10000; i++ {
+			count++
+		}
+		wg.Done()
+	}()
+
+	go func() {
+		for i := 1; i <= 10000; i++ {
+			count++
+		}
+		wg.Done()
+	}()
+	wg.Wait()
+	fmt.Println(count)
+}
+
+func demo() {
 	var ops uint64
 	var wg sync.WaitGroup
 	for i := 1; i <= 50; i++ {
@@ -22,8 +48,4 @@ func main() {
 	}
 	wg.Wait()
 	fmt.Println(ops)
-}
-
-func test() {
-
 }

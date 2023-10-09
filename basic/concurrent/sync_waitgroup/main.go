@@ -13,6 +13,23 @@ func worker(id int) {
 }
 
 func main() {
+	//wait_add_togther_done()
+	wait_mutiAnd()
+}
+
+func wait_mutiAnd() {
+	wg := sync.WaitGroup{}
+	wg.Add(5)
+
+	for w := 0; w < 5; w++ {
+		fmt.Println("Finish: ", w)
+		wg.Done()
+	}
+	wg.Wait()
+	fmt.Println("结束程序")
+}
+
+func wait_add_togther_done() {
 	var wg sync.WaitGroup
 	for i := 1; i <= 5; i++ {
 		wg.Add(1)

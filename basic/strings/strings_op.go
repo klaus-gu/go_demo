@@ -3,10 +3,20 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"strings"
 )
 
 func main() {
-	string_operate()
+	//string_operate()
+	clone()
+}
+
+func clone() {
+	s := "abc"
+	s2 := strings.Clone(s)
+	fmt.Println(s == s2)
+	fmt.Println(&s)
+	fmt.Println(&s2)
 }
 
 func string_operate() {

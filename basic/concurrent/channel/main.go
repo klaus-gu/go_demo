@@ -1,11 +1,31 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
 	//create_channel()
 	//close_channel()
-	channel_demo()
+	//channel_demo()
+	waitForAllChannels()
+}
+
+func waitForAllChannels() {
+	wait := make(chan int, 5)
+
+	for a := 0; a < 5; a++ {
+		go func() {
+			time.Sleep(1 * time.Second)
+			fmt.Println("填充 wait：", a)
+			wait <- a
+		}()
+	}
+	for w := 0; w < 5; w++ {
+		fmt.Println("等待 wait：", w)
+		<-wait
+	}
 }
 
 func channel_demo() {
@@ -22,7 +42,8 @@ func channel_demo() {
 	}
 }
 
-/**
+/*
+*
 关闭channel
 */
 func close_channel() {

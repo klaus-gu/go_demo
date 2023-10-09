@@ -13,7 +13,8 @@ func main() {
 	errors_is()
 }
 
-/**
+/*
+*
 判断这个 error 是否包含某一个特定的 error
 */
 func errors_is() {
@@ -23,7 +24,8 @@ func errors_is() {
 	}
 }
 
-/**
+/*
+*
 fmt.Errorf("***",error)：可以将error或者wrapError再一次包装，层层包装
 errors.Unwrap(error):将error再次解开一次包装
 */
@@ -41,7 +43,7 @@ func create_unwrap() {
 }
 
 func create_errorString() {
-	err := errors.New("this is a demo error.")
+	err := errors.New("this is a cancel error.")
 	basicErr := fmt.Errorf("some context: %v", err)
 
 	if _, ok := basicErr.(interface{ Unwrap() error }); !ok {
@@ -50,7 +52,7 @@ func create_errorString() {
 }
 
 func create_errorWrap() {
-	err := errors.New("this is a demo error .")
+	err := errors.New("this is a cancel error .")
 	// fmt.Errorf 给 errorstring 套上一层皮
 	basicErr := fmt.Errorf("some context:%w", err)
 	/**
