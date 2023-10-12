@@ -8,7 +8,9 @@ import (
 
 func main() {
 	//string_operate()
-	clone()
+	//clone()
+	r := []rune("你好")
+	fmt.Println(len(r))
 }
 
 func clone() {
