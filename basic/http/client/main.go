@@ -3,7 +3,6 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"io"
 	"net/http"
 	"os"
 )
@@ -18,11 +17,26 @@ func http_get() {
 		fmt.Errorf(err.Error())
 	}
 
-	bt := []byte{}
-	resp.Body.Read(bt)
-
-	io.Copy(os.Stdout, bytes.NewReader(bt))
-
+	buff := new(bytes.Buffer)
+	buff.Grow(1024)
+	fmt.Println(buff.Cap())
+	body := resp.Body
+	//allBytes, err := io.ReadAll(body)
+	//io.Copy(os.Stdout, bytes.NewReader(allBytes))
+	for {
+		fmt.Println("buff len: ", buff.Len())
+		bt := make([]byte, 20)
+		n, err := body.Read(bt)
+		fmt.Println("write == ", n)
+		if err != nil {
+			fmt.Println("Has read all.")
+			break
+		} else {
+			buff.Write(bt)
+		}
+	}
+	fmt.Println("final len: ", buff.Len())
+	buff.WriteTo(os.Stdout)
 	resp.Body.Close()
 }
 
