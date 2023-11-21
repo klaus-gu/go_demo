@@ -50,7 +50,7 @@ func (server *AgentServer) clusterConsumer(brokers []string, topics []string, gr
 			if ok {
 				log.WithFields(log.Fields{
 					"groupId":   groupId,
-					"topic":     msg.Topic,
+					"ka":        msg.Topic,
 					"partition": msg.Partition,
 					"offset":    msg.Offset,
 					"key":       msg.Key,

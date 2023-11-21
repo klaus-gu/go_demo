@@ -17,12 +17,15 @@ func Connect(username, password, addr, dbName string) *gorm.DB {
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		fmt.Println("数据库建立连接异常：", err.Error())
+		panic(err.Error())
 	}
 
 	sqlDB, err := db.DB()
 	if err != nil {
 		fmt.Println("数据库连接异常：", err.Error())
+		panic(err.Error())
 	}
+	defer sqlDB.Close()
 	// SetMaxIdleConns sets the maximum number of connections in the idle connection pool.
 	sqlDB.SetMaxIdleConns(10)
 	// SetMaxOpenConns sets the maximum number of open connections to the database.
