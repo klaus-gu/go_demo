@@ -37,5 +37,7 @@ func main() {
 
 	// 查询
 	//operate.GetSingle()
-	operate.List()
+	//operate.List()
+	operate.Page(0, 5)
+	operate.Page(5, 5)
 }

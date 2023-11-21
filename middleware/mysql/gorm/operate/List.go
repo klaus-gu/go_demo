@@ -33,3 +33,13 @@ func List() {
 		fmt.Println(marshalToString)
 	}
 }
+
+func Page(offset, limit int) {
+	fmt.Println("分页查询所有")
+	authors := []*model.Author{}
+	MyDB.Table("author").Offset(offset).Limit(limit).Find(&authors)
+	for _, author := range authors {
+		marshalToString, _ := jsoniter.MarshalToString(author)
+		fmt.Println(marshalToString)
+	}
+}
