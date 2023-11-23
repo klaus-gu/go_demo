@@ -1,6 +1,20 @@
 package ka
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/segmentio/kafka-go"
+)
+
+func CreateTopic(topic string) {
+	kafkaTopics := []kafka.TopicConfig{
+		{
+			Topic:             topic,
+			NumPartitions:     1,
+			ReplicationFactor: 1,
+		},
+	}
+	MyConn.CreateTopics(kafkaTopics...)
+}
 
 func ListTopic() {
 	partitions, err := MyConn.ReadPartitions()

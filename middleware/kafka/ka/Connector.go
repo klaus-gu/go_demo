@@ -9,6 +9,5 @@ func connect() *kafka.Conn {
 	if err != nil {
 		panic(err.Error())
 	}
-	defer conn.Close()
 	return conn
 }
