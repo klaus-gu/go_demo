@@ -21,4 +21,12 @@ func main() {
 		}
 	}
 	fmt.Println("2d:", twoD)
+
+	// 可变参数和数组的转换，使用“...” 关键词跟在数组变量后面
+	s := []string{"1", "2", "3"}
+	test(s...)
+}
+
+func test(strs ...string) {
+
 }
